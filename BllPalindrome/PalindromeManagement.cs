@@ -10,9 +10,21 @@ namespace BllPalindrome
     public class PalindromeManagement
     {
         /// <summary>
+        /// METHODE POUR SUPPRIMER LES PARENTHESES AVEC REGEX
         /// bracketClean = Regex.Replace(bracketClean, @"\(.*\)", "");
         /// Regex.Replace cherche la parenthèse ouvrante et fermante puis clean  
+        /// 
+        /// DEF METHODE .TRIM
         /// .Trim() enlève les espaces devant et derrière.
+        /// 
+        /// ENLEVE TOUT LES TITRES DU FICHIER
+        /// titleClean = bracketClean.Replace("Noms propres","");
+        /// titleClean = bracketClean.Replace("Prénoms", "");
+        /// titleClean = bracketClean.Replace("Villes et localités", "");
+        /// titleClean = bracketClean.Replace("Rivières", "");
+        /// titleClean = bracketClean.Replace("Divers", "");
+        /// 
+        /// 
         /// </summary>
         /// <param name="pFileName"></param>
         /// <returns></returns>
@@ -24,7 +36,6 @@ namespace BllPalindrome
             foreach (string line in readLines)
             {
                 string bracketClean = line;
-
                 for (int countLetterBetweenBrackets = 0; countLetterBetweenBrackets < bracketClean.Length; countLetterBetweenBrackets++)
                 {
                     int firstBracket = bracketClean.IndexOf('(');
