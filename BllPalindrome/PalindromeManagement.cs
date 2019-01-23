@@ -18,13 +18,15 @@ namespace BllPalindrome
         /// .Trim() enlève les espaces devant et derrière.
         /// 
         /// ENLEVE TOUT LES TITRES DU FICHIER
-        /// titleClean = bracketClean.Replace("Noms propres","");
-        /// titleClean = bracketClean.Replace("Prénoms", "");
-        /// titleClean = bracketClean.Replace("Villes et localités", "");
-        /// titleClean = bracketClean.Replace("Rivières", "");
-        /// titleClean = bracketClean.Replace("Divers", "");
+        /// titleClean = line.Replace("Noms propres","");
+        /// titleClean = line.Replace("Prénoms", "");
+        /// titleClean = line.Replace("Villes et localités", "");
+        /// titleClean = line.Replace("Rivières", "");
+        /// titleClean = line.Replace("Divers", "");
         /// 
-        /// 
+        /// CLEAN LES ESPACES DANS LA LISTE
+        /// cleanLines = cleanLines.Where(val => !string.IsNullOrEmpty(val)).ToList();
+        /// ou la valeur est différente de 0 on met dans la liste
         /// </summary>
         /// <param name="pFileName"></param>
         /// <returns></returns>
@@ -35,6 +37,7 @@ namespace BllPalindrome
             List<string> cleanLines = new List<string>();
             foreach (string line in readLines)
             {
+                
                 string bracketClean = line;
                 for (int countLetterBetweenBrackets = 0; countLetterBetweenBrackets < bracketClean.Length; countLetterBetweenBrackets++)
                 {
@@ -46,7 +49,8 @@ namespace BllPalindrome
                     }
                 }
                 string[] splitted = bracketClean.Split(',');
-                cleanLines.Add(splitted[0].Trim()); 
+                cleanLines = cleanLines.Where(valeur => !string.IsNullOrEmpty(valeur)).ToList();
+                cleanLines.Add(splitted[0].Trim());
             }
             return cleanLines;
         }
