@@ -27,6 +27,7 @@ namespace BllPalindrome
         /// CLEAN LES ESPACES DANS LA LISTE
         /// cleanLines = cleanLines.Where(val => !string.IsNullOrEmpty(val)).ToList();
         /// ou la valeur est différente de 0 on met dans la liste
+        /// 
         /// </summary>
         /// <param name="pFileName"></param>
         /// <returns></returns>
@@ -37,7 +38,6 @@ namespace BllPalindrome
             List<string> cleanLines = new List<string>();
             foreach (string line in readLines)
             {
-                
                 string bracketClean = line;
                 for (int countLetterBetweenBrackets = 0; countLetterBetweenBrackets < bracketClean.Length; countLetterBetweenBrackets++)
                 {
