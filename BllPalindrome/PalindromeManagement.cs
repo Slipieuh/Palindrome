@@ -9,6 +9,13 @@ namespace BllPalindrome
 {
     public class PalindromeManagement
     {
+        /// <summary>
+        /// bracketClean = Regex.Replace(bracketClean, @"\(.*\)", "");
+        /// Regex.Replace cherche la parenthèse ouvrante et fermante puis clean  
+        /// .Trim() enlève les espaces devant et derrière.
+        /// </summary>
+        /// <param name="pFileName"></param>
+        /// <returns></returns>
         public List<string> GetListPalindromeFromFile(string pFileName)
         {
             FileTextReaderUtility myReader = new FileTextReaderUtility();
@@ -18,7 +25,7 @@ namespace BllPalindrome
             {
                 string bracketClean = line;
 
-                for (int count = 0; count < bracketClean.Length; count++)
+                for (int countLetterBetweenBrackets = 0; countLetterBetweenBrackets < bracketClean.Length; countLetterBetweenBrackets++)
                 {
                     int firstBracket = bracketClean.IndexOf('(');
                     int lastBracket = bracketClean.LastIndexOf(')');
@@ -27,11 +34,8 @@ namespace BllPalindrome
                         bracketClean = bracketClean.Substring(0, firstBracket) + bracketClean.Substring(lastBracket + 1);
                     }
                 }
-                // string bracketClean = line;
-                // bracketClean = Regex.Replace(bracketClean, @"\(.*\)", "");
-                // Regex.Replace cherche la parenthèse ouvrante et fermante puis clean         
                 string[] splitted = bracketClean.Split(',');
-                cleanLines.Add(splitted[0].Trim()); //.Trim() enlève les espaces devant et derrière.
+                cleanLines.Add(splitted[0].Trim()); 
             }
             return cleanLines;
         }
