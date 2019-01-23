@@ -20,11 +20,11 @@ namespace BllPalindrome
 
                 for (int count = 0; count < bracketClean.Length; count++)
                 {
-                    int start = bracketClean.IndexOf('(');
-                    int end = bracketClean.LastIndexOf(')');
-                    if (start >= 0 && end >= 0)
+                    int firstBracket = bracketClean.IndexOf('(');
+                    int lastBracket = bracketClean.LastIndexOf(')');
+                    if (firstBracket >= 0 && lastBracket >= 0)
                     {
-                        bracketClean = bracketClean.Substring(0, start) + bracketClean.Substring(end + 1);
+                        bracketClean = bracketClean.Substring(0, firstBracket) + bracketClean.Substring(lastBracket + 1);
                     }
                 }
                 // string bracketClean = line;
