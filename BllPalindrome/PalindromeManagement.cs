@@ -48,9 +48,11 @@ namespace BllPalindrome
                         bracketClean = bracketClean.Substring(0, firstBracket) + bracketClean.Substring(lastBracket + 1);
                     }
                 }
-                string[] splitted = bracketClean.Split(',');
-                cleanLines = cleanLines.Where(valeur => !string.IsNullOrEmpty(valeur)).ToList();
-                cleanLines.Add(splitted[0].Trim());
+                string splitted = bracketClean.Split(',')[0];
+                if (!string.IsNullOrEmpty(splitted))
+                {
+                    cleanLines.Add(splitted.Trim());
+                }
             }
             return cleanLines;
         }
